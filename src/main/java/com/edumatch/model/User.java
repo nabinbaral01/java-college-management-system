@@ -13,46 +13,26 @@ import java.time.LocalDateTime;
  * Supports different user roles: ADMIN, STUDENT, etc.
  */
 public class User {
-    // ========== FIELD DECLARATIONS ==========
-    /** Unique identifier for each user */
+    // User identification fields
     private int userId;
-    
-    /** Username for login authentication */
     private String username;
-    
-    /** Email address for communication and verification */
     private String email;
     
-    /** Hashed password for secure authentication */
+    // Security field
     private String passwordHash;
     
-    /** Role ID linking to the role/permission level */
+    // Role and status fields
     private int roleId;
-    
-    /** Role name (e.g., ADMIN, STUDENT, INSTRUCTOR) */
     private String roleName;
-    
-    /** Flag indicating if the user account is active */
     private boolean isActive;
     
-    /** Timestamp when the user account was created */
+    // Timestamp field for audit trail
     private LocalDateTime createdAt;
 
-    // ========== CONSTRUCTORS ==========
-    /**
-     * Default constructor - creates an empty User object
-     */
+    // Default constructor
     public User() {}
 
-    /**
-     * Constructor with user details (excluding password and timestamps)
-     * @param userId      - Unique user identifier
-     * @param username    - Username for login
-     * @param email       - User email address
-     * @param roleId      - Role ID for permission level
-     * @param roleName    - Role name string
-     * @param isActive    - Account active status
-     */
+    // Constructor with main user details
     public User(int userId, String username, String email, int roleId, String roleName, boolean isActive) {
         this.userId   = userId;
         this.username = username;
@@ -62,171 +42,43 @@ public class User {
         this.isActive = isActive;
     }
 
-    // ========== GETTERS & SETTERS ==========
+    // Getters & Setters
+    public int getUserId()             { return userId; }
+    public void setUserId(int v)       { this.userId = v; }
     
-    /**
-     * Gets the user ID
-     * @return the unique user identifier
-     */
-    public int getUserId() { 
-        return userId; 
-    }
+    public String getUsername()        { return username; }
+    public void setUsername(String v)  { this.username = v; }
     
-    /**
-     * Sets the user ID
-     * @param v - the user ID to set
-     */
-    public void setUserId(int v) { 
-        this.userId = v; 
-    }
+    public String getEmail()           { return email; }
+    public void setEmail(String v)     { this.email = v; }
     
-    /**
-     * Gets the username
-     * @return the username string
-     */
-    public String getUsername() { 
-        return username; 
-    }
+    public String getPasswordHash()    { return passwordHash; }
+    public void setPasswordHash(String v) { this.passwordHash = v; }
     
-    /**
-     * Sets the username
-     * @param v - the username to set
-     */
-    public void setUsername(String v) { 
-        this.username = v; 
-    }
+    public int getRoleId()             { return roleId; }
+    public void setRoleId(int v)       { this.roleId = v; }
     
-    /**
-     * Gets the email address
-     * @return the email string
-     */
-    public String getEmail() { 
-        return email; 
-    }
+    public String getRoleName()        { return roleName; }
+    public void setRoleName(String v)  { this.roleName = v; }
     
-    /**
-     * Sets the email address
-     * @param v - the email to set
-     */
-    public void setEmail(String v) { 
-        this.email = v; 
-    }
+    public boolean isActive()          { return isActive; }
+    public void setActive(boolean v)   { this.isActive = v; }
     
-    /**
-     * Gets the password hash
-     * @return the hashed password string
-     */
-    public String getPasswordHash() { 
-        return passwordHash; 
-    }
-    
-    /**
-     * Sets the password hash
-     * @param v - the password hash to set
-     */
-    public void setPasswordHash(String v) { 
-        this.passwordHash = v; 
-    }
-    
-    /**
-     * Gets the role ID
-     * @return the role identifier
-     */
-    public int getRoleId() { 
-        return roleId; 
-    }
-    
-    /**
-     * Sets the role ID
-     * @param v - the role ID to set
-     */
-    public void setRoleId(int v) { 
-        this.roleId = v; 
-    }
-    
-    /**
-     * Gets the role name
-     * @return the role name string (e.g., "ADMIN", "STUDENT")
-     */
-    public String getRoleName() { 
-        return roleName; 
-    }
-    
-    /**
-     * Sets the role name
-     * @param v - the role name to set
-     */
-    public void setRoleName(String v) { 
-        this.roleName = v; 
-    }
-    
-    /**
-     * Checks if the user account is active
-     * @return true if account is active, false otherwise
-     */
-    public boolean isActive() { 
-        return isActive; 
-    }
-    
-    /**
-     * Sets the active status of the user account
-     * @param v - the active status to set
-     */
-    public void setActive(boolean v) { 
-        this.isActive = v; 
-    }
-    
-    /**
-     * Gets the account creation timestamp
-     * @return the LocalDateTime when account was created
-     */
-    public LocalDateTime getCreatedAt() { 
-        return createdAt; 
-    }
-    
-    /**
-     * Sets the account creation timestamp
-     * @param v - the creation timestamp to set
-     */
-    public void setCreatedAt(LocalDateTime v) { 
-        this.createdAt = v; 
-    }
+    public LocalDateTime getCreatedAt()       { return createdAt; }
+    public void setCreatedAt(LocalDateTime v) { this.createdAt = v; }
 
-    // ========== UTILITY METHODS ==========
-    
-    /**
-     * Returns the creation date in formatted string
-     * @return formatted date string (yyyy-MM-dd) or "—" if null
-     */
+    // Utility method to get formatted creation date
     public String getCreatedAtFormatted() {
         if (createdAt == null) return "—";
         return createdAt.toLocalDate().toString();
     }
 
-    /**
-     * Checks if the user has ADMIN role
-     * @return true if user role is ADMIN, false otherwise
-     */
-    public boolean isAdmin() { 
-        return "ADMIN".equalsIgnoreCase(roleName); 
-    }
-    
-    /**
-     * Checks if the user has STUDENT role
-     * @return true if user role is STUDENT, false otherwise
-     */
-    public boolean isStudent() { 
-        return "STUDENT".equalsIgnoreCase(roleName); 
-    }
+    // Role verification methods
+    public boolean isAdmin()   { return "ADMIN".equalsIgnoreCase(roleName); }
+    public boolean isStudent() { return "STUDENT".equalsIgnoreCase(roleName); }
 
-    // ========== OBJECT METHODS ==========
-    
-    /**
-     * Returns a string representation of the User object
-     * @return formatted string with userId, username, and role
-     */
-    @Override 
-    public String toString() {
+    // String representation of User object
+    @Override public String toString() {
         return "User{userId=" + userId + ", username='" + username + "', role='" + roleName + "'}";
     }
 }
