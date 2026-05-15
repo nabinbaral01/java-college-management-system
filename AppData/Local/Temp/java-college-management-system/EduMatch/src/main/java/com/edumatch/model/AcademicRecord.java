@@ -6,8 +6,11 @@ import java.time.LocalDateTime;
 /**
  * AcademicRecord
  *
- * Repo-relative copy so the file appears under EduMatch/... on GitHub.
- * This mirrors StudentProfile and can be modified to include academic fields.
+ * This model class is created from the StudentProfile structure per request.
+ * It currently mirrors the StudentProfile fields so you can adapt it later
+ * to hold academic-specific fields (grades, semester, GPA, etc.).
+ *
+ * Created for branch: nawaraj
  */
 public class AcademicRecord {
     private int profileId;
@@ -65,6 +68,10 @@ public class AcademicRecord {
     public String getEmail()               { return email; }
     public void setEmail(String v)         { this.email = v; }
 
+    /**
+     * Returns the path to display for the profile photo, falling back to a
+     * default avatar when no photo is set.
+     */
     public String getDisplayPhotoPath() {
         return (profilePhoto != null && !profilePhoto.isEmpty())
                ? profilePhoto : "/images/default-avatar.png";
