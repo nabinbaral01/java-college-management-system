@@ -9,6 +9,9 @@ import java.util.List;
 
 /**
  * ApplicationDAO – CRUD for student applications.
+ *
+ * Data access object for managing student applications and related queries.
+ * Updated: pushed code provided by user on 2026-05-19.
  */
 public class ApplicationDAO {
 
